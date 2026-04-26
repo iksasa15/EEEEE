@@ -461,6 +461,17 @@
   line-height: 1.42;
 }
 
+.deck__slide--hero .deck__note {
+  width: min(100%, 44rem);
+  margin-inline: auto;
+  margin-top: clamp(1rem, 3vw, 1.5rem);
+  padding-top: clamp(0.85rem, 2vw, 1.1rem);
+  text-align: center;
+  line-height: 1.65;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--exhibit-body);
+}
+
 .deck__slide--stats {
   justify-content: flex-start;
   gap: 0.45rem;

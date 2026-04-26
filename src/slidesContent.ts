@@ -27,7 +27,7 @@ export type Slide = {
   bullets?: string[]
   note?: string
   inlineMarkers?: boolean
-  layout?: 'stats'
+  layout?: 'stats' | 'hero'
   bulletVariants?: Array<'green' | 'ink' | 'brown'>
   showSurveyCharts?: boolean
   body?: string
@@ -258,6 +258,7 @@ export const slides: Slide[] = [
   {
     section: 'closing',
     title: 'خاتمة العرض',
-    note: 'إعداد الطالبات\nربى الحربي — ريوف الحارثي — لانا\nرانيا الشهري بلغيث',
+    layout: 'hero',
+    note: 'إعداد الطالبات\nربى الحربي — ريوف الحارثي — لانا رانيا الشهري بلغيث',
   },
 ]

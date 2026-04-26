@@ -12,14 +12,15 @@ function App() {
   const [index, setIndex] = useState(0)
   const total = slides.length
   const slide = slides[index]
-  /** شريحة عنوان فقط (بدون قوائم/نص طويل) — توسيط عمودي وأفقي */
+  /** شريحة عنوان (± ترجمة أو ملاحظة قصيرة) — توسيط عمودي وأفقي؛ `layout: 'hero'` يفرض التوسيط حتى مع `note` */
   const heroCentered =
-    !slide.showSurveyCharts &&
-    Boolean(slide.title?.trim()) &&
-    !slide.body?.trim() &&
-    !slide.boxedSections?.length &&
-    !slide.bullets?.length &&
-    !slide.note?.trim()
+    slide.layout === 'hero' ||
+    (!slide.showSurveyCharts &&
+      Boolean(slide.title?.trim()) &&
+      !slide.body?.trim() &&
+      !slide.boxedSections?.length &&
+      !slide.bullets?.length &&
+      !slide.note?.trim())
 
   const goNext = useCallback(() => {
     setIndex((i) => Math.min(i + 1, total - 1))
