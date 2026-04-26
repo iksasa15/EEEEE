@@ -1,21 +1,13 @@
-/* —— لوحة عرض النتائج — نفس هوية العرض (أزرق سماوي / زجاج) —— */
+/* لوحة النتائج — أسلوب أكاديمي فاتح (يتبع متغيرات :root) */
 
 .survey-dashboard {
   position: relative;
   width: 100%;
   margin: 0.35rem 0 0;
-  border-radius: 18px;
-  background: linear-gradient(
-    155deg,
-    rgba(255, 255, 255, 0.88) 0%,
-    rgba(240, 251, 255, 0.72) 48%,
-    rgba(224, 242, 254, 0.58) 100%
-  );
-  border: 1px solid rgba(137, 207, 240, 0.55);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, 0.85),
-    0 12px 32px rgba(43, 108, 176, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.5) inset;
+  border-radius: 6px;
+  background: var(--exhibit-card);
+  border: 1px solid var(--exhibit-border);
+  box-shadow: 0 1px 4px rgba(28, 25, 23, 0.06);
   overflow: hidden;
 }
 
@@ -26,7 +18,6 @@
     clamp(0.85rem, 2vw, 1.15rem);
 }
 
-/* زخرفة حواف بألوان الموقع */
 .survey-dashboard__deco {
   position: absolute;
   top: 0;
@@ -34,7 +25,7 @@
   width: min(22%, 7.5rem);
   pointer-events: none;
   z-index: 0;
-  opacity: 0.5;
+  opacity: 0.4;
 }
 
 .survey-dashboard__deco--rtl {
@@ -42,17 +33,17 @@
   background:
     radial-gradient(
       circle at 2px 2px,
-      rgba(255, 255, 255, 0.6) 1.5px,
+      rgba(255, 255, 255, 0.7) 1.5px,
       transparent 2px
     ),
     radial-gradient(
       ellipse 100% 70% at 100% 30%,
-      rgba(56, 189, 248, 0.35) 0%,
+      rgba(30, 58, 95, 0.06) 0%,
       transparent 58%
     ),
     radial-gradient(
       ellipse 90% 55% at 100% 72%,
-      rgba(43, 108, 176, 0.22) 0%,
+      rgba(120, 113, 108, 0.12) 0%,
       transparent 50%
     );
   background-size:
@@ -66,17 +57,17 @@
   background:
     radial-gradient(
       circle at 2px 2px,
-      rgba(255, 255, 255, 0.55) 1.5px,
+      rgba(255, 255, 255, 0.65) 1.5px,
       transparent 2px
     ),
     radial-gradient(
       ellipse 100% 70% at 0% 65%,
-      rgba(56, 189, 248, 0.32) 0%,
+      rgba(30, 58, 95, 0.06) 0%,
       transparent 58%
     ),
     radial-gradient(
       ellipse 85% 50% at 0% 28%,
-      rgba(99, 102, 241, 0.18) 0%,
+      rgba(120, 113, 108, 0.1) 0%,
       transparent 48%
     );
   background-size:
@@ -92,7 +83,7 @@
   gap: 0.65rem;
   margin-bottom: 0.75rem;
   padding-bottom: 0.65rem;
-  border-bottom: 2px solid rgba(43, 108, 176, 0.28);
+  border-bottom: 2px solid var(--exhibit-border-strong);
 }
 
 .survey-dashboard__header-icon {
@@ -101,12 +92,10 @@
   height: 2.75rem;
   display: grid;
   place-items: center;
-  border-radius: 12px;
-  background: linear-gradient(145deg, #4299e1 0%, #2b6cb0 100%);
+  border-radius: 4px;
+  background: var(--exhibit-accent);
   color: #fff;
-  box-shadow:
-    0 4px 14px rgba(43, 108, 176, 0.35),
-    0 0 0 1px rgba(255, 255, 255, 0.25) inset;
+  box-shadow: none;
 }
 
 .survey-dashboard__icon-svg {
@@ -123,16 +112,16 @@
   margin: 0;
   font-size: clamp(1.35rem, 3.9vw, 1.85rem);
   font-weight: 800;
-  color: #1a4a6e;
+  color: var(--exhibit-accent);
   letter-spacing: -0.02em;
   line-height: 1.25;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+  text-shadow: none;
 }
 
 .survey-dashboard__subtitle {
   margin: 0.2rem 0 0;
   font-size: clamp(1rem, 2.15vw, 1.15rem);
-  color: #3182ce;
+  color: var(--exhibit-accent-soft);
   font-weight: 500;
 }
 
@@ -157,17 +146,11 @@
   margin: 0;
   padding: clamp(0.55rem, 1.4vw, 0.75rem) clamp(0.55rem, 1.4vw, 0.7rem)
     clamp(0.6rem, 1.5vw, 0.8rem);
-  border-radius: 14px;
-  background: linear-gradient(
-    155deg,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(240, 251, 255, 0.75) 100%
-  );
-  border: 1px solid rgba(56, 189, 248, 0.4);
-  box-shadow:
-    0 1px 0 rgba(255, 255, 255, 0.95) inset,
-    0 6px 18px rgba(43, 108, 176, 0.08),
-    0 0 0 1px rgba(255, 255, 255, 0.65) inset;
+  border-radius: 6px;
+  background: var(--exhibit-paper);
+  border: 1px solid var(--exhibit-border);
+  box-shadow: 0 1px 2px rgba(28, 25, 23, 0.04);
+  border-inline-end: 3px solid var(--exhibit-accent);
   text-align: right;
   opacity: 0;
   animation: surveyCardIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) forwards;
@@ -195,9 +178,9 @@
   font-size: 0.72rem;
   font-weight: 800;
   color: #fff;
-  background: linear-gradient(135deg, #4299e1, #2b6cb0);
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(43, 108, 176, 0.3);
+  background: var(--exhibit-accent);
+  border-radius: 3px;
+  box-shadow: none;
   line-height: 1;
 }
 
@@ -205,11 +188,10 @@
   margin: 0 2.1rem 0.45rem 0;
   font-size: clamp(1.02rem, 2.35vw, 1.18rem);
   font-weight: 700;
-  color: #1a4a6e;
+  color: var(--exhibit-accent);
   line-height: 1.38;
 }
 
-/* —— دونات —— */
 .survey-chart-block__body {
   display: flex;
   flex-direction: row;
@@ -227,14 +209,14 @@
   width: min(4.65rem, 24vw);
   height: min(4.65rem, 24vw);
   flex-shrink: 0;
-  filter: drop-shadow(0 3px 10px rgba(43, 108, 176, 0.18));
+  filter: drop-shadow(0 1px 3px rgba(28, 25, 23, 0.08));
 }
 
 .survey-chart-donut {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  box-shadow: inset 0 0 0 1px rgba(43, 108, 176, 0.12);
+  box-shadow: inset 0 0 0 1px var(--exhibit-border);
   transition: opacity 0.2s ease;
 }
 
@@ -246,10 +228,10 @@
   position: absolute;
   inset: 26%;
   border-radius: 50%;
-  background: linear-gradient(160deg, #fff 0%, #f0fbff 100%);
+  background: linear-gradient(160deg, #fff 0%, var(--exhibit-paper-shade) 100%);
   box-shadow:
-    inset 0 0 0 1px rgba(43, 108, 176, 0.1),
-    0 0 0 1px rgba(255, 255, 255, 0.6);
+    inset 0 0 0 1px var(--exhibit-border),
+    0 0 0 1px rgba(255, 255, 255, 0.5);
   pointer-events: none;
 }
 
@@ -263,7 +245,7 @@
   flex-wrap: wrap;
   gap: 0.28rem 0.55rem;
   font-size: clamp(0.95rem, 2.1vw, 1.1rem);
-  color: #2c5282;
+  color: var(--exhibit-body);
   line-height: 1.38;
 }
 
@@ -276,17 +258,16 @@
 .survey-chart-legend__swatch {
   width: 9px;
   height: 9px;
-  border-radius: 50%;
+  border-radius: 2px;
   flex-shrink: 0;
-  box-shadow: 0 0 0 1px rgba(26, 74, 110, 0.12);
+  box-shadow: 0 0 0 1px var(--exhibit-border);
 }
 
 .survey-chart-legend__text strong {
   font-weight: 800;
-  color: #1a4a6e;
+  color: var(--exhibit-ink);
 }
 
-/* —— مخطط أعمدة رأسي —— */
 .survey-bar-chart {
   width: 100%;
   padding: 0.15rem 0 0;
@@ -314,7 +295,7 @@
 .survey-bar-chart__pct {
   font-size: clamp(0.95rem, 2.1vw, 1.08rem);
   font-weight: 800;
-  color: #1a4a6e;
+  color: var(--exhibit-accent);
 }
 
 .survey-bar-chart__track {
@@ -325,28 +306,24 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  background: linear-gradient(
-    180deg,
-    rgba(56, 189, 248, 0.08) 0%,
-    rgba(43, 108, 176, 0.12) 100%
-  );
-  border-radius: 8px 8px 4px 4px;
+  background: var(--exhibit-border);
+  border-radius: 3px 3px 2px 2px;
   overflow: hidden;
-  border: 1px solid rgba(137, 207, 240, 0.55);
+  border: 1px solid var(--exhibit-border-strong);
 }
 
 .survey-bar-chart__fill {
   width: 100%;
-  border-radius: 6px 6px 0 0;
+  border-radius: 2px 2px 0 0;
   min-height: 4px;
   transition: height 0.4s ease;
-  box-shadow: 0 -2px 10px rgba(43, 108, 176, 0.18);
+  box-shadow: none;
 }
 
 .survey-bar-chart__label {
   font-size: clamp(0.9rem, 2vw, 1.05rem);
   font-weight: 600;
-  color: #2c5282;
+  color: var(--exhibit-body);
   text-align: center;
   line-height: 1.25;
   padding: 0 0.1rem;

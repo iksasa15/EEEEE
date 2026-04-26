@@ -145,7 +145,25 @@ function App() {
                   style={{ animationDelay: `${0.05 + j * 0.08}s` }}
                 >
                   <h2 className="deck__box-heading">{box.heading}</h2>
-                  <p className="deck__box-text">{box.text}</p>
+                  {box.bullets?.length ? (
+                    <ul
+                      className={`deck__list deck__list--in-box${slide.inlineMarkers ? ' deck__list--pdf' : ''}`}
+                    >
+                      {box.bullets.map((item, k) => (
+                        <li
+                          key={`${index}-box-${j}-li-${k}`}
+                          className="deck__list-item"
+                          style={{
+                            animationDelay: `${0.05 + j * 0.08 + k * 0.05}s`,
+                          }}
+                        >
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : box.text != null && box.text !== '' ? (
+                    <p className="deck__box-text">{box.text}</p>
+                  ) : null}
                 </article>
               ))}
             </div>

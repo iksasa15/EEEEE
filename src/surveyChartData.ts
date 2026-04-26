@@ -1,11 +1,11 @@
-/** بيانات الاستبانة (56 ردًا) — ألوان متناسقة مع هوية العرض (أزرق / سماوي) */
+/** بيانات الاستبانة (56 ردًا) — ألوان أكاديمية هادئة */
 export const surveyPalette = {
-  ink: '#1a4a6e',
-  blue: '#2b6cb0',
-  bright: '#3182ce',
-  sky: '#38bdf8',
-  cyan: '#0ea5e9',
-  indigo: '#6366f1',
+  ink: '#1e3a5f',
+  blue: '#334155',
+  bright: '#475569',
+  sky: '#78716c',
+  cyan: '#0f766e',
+  indigo: '#57534e',
 } as const
 
 export type SurveySegment = {

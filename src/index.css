@@ -61,6 +61,21 @@
   color-scheme: light;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* أسلوب أكاديمي فاتح — عرض / معرض */
+  --exhibit-ink: #1c1917;
+  --exhibit-muted: #57534e;
+  --exhibit-body: #44403c;
+  --exhibit-accent: #1e3a5f;
+  --exhibit-accent-soft: #334155;
+  --exhibit-paper: #faf8f5;
+  --exhibit-paper-shade: #f2f0ec;
+  --exhibit-card: #ffffff;
+  --exhibit-border: #e7e5e4;
+  --exhibit-border-strong: #d6d3d1;
+  --exhibit-note: #78716c;
+  --exhibit-success: #166534;
+  --exhibit-warn: #9a3412;
 }
 
 *,
@@ -78,7 +93,8 @@ body {
   min-height: 100%;
   min-height: 100svh;
   min-height: 100dvh;
-  background: #dff6ff;
+  background: var(--exhibit-paper);
+  color: var(--exhibit-body);
 }
 
 #root {

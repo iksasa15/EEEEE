@@ -85,7 +85,7 @@ function SurveyBarChart({ segments }: { segments: SurveySegment[] }) {
                 className="survey-bar-chart__fill"
                 style={{
                   height: `${Math.max(8, (seg.pct / max) * 100)}%`,
-                  background: `linear-gradient(180deg, ${seg.color} 0%, #164e73 100%)`,
+                  background: `linear-gradient(180deg, ${seg.color} 0%, #1c1917 100%)`,
                 }}
               />
             </div>
