@@ -1,7 +1,7 @@
-/** خلفية زخرفية: مؤثرات رقمية + شبكة عصبية مبسّطة — تفاعل خفيف مع الحركة فقط */
+/** خلفية زخرفية ثابتة (بدون حركة) — ألوان وشبكة خفيفة */
 export function StimulusBackdrop() {
   return (
-    <div className="stimulus-backdrop" aria-hidden="true">
+    <div className="stimulus-backdrop stimulus-backdrop--static" aria-hidden="true">
       <div className="stimulus-backdrop__blobs">
         <span className="stimulus-blob stimulus-blob--a" />
         <span className="stimulus-blob stimulus-blob--b" />

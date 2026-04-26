@@ -1,20 +1,15 @@
+import { useCallback, useEffect, useState } from 'react'
 import {
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type PointerEvent as DeckPointerEvent,
-} from 'react'
-import { slides } from './slidesContent'
+  slides,
+  slideSectionLabel,
+  deckBrandPrimary,
+} from './slidesContent'
 import { SurveyChartBlocks } from './SurveyChartBlocks'
 import { StimulusBackdrop } from './StimulusBackdrop'
 import './App.css'
 
 function App() {
-  const deckRef = useRef<HTMLDivElement>(null)
   const [index, setIndex] = useState(0)
-  const [pointer, setPointer] = useState({ x: 0.5, y: 0.5 })
   const total = slides.length
   const slide = slides[index]
   /** شريحة عنوان فقط (بدون قوائم/نص طويل) — توسيط عمودي وأفقي */
@@ -49,60 +44,60 @@ function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [goNext, goPrev])
 
-  const onDeckPointer = useCallback(
-    (e: DeckPointerEvent<HTMLDivElement>) => {
-      const el = deckRef.current
-      if (!el) return
-      const r = el.getBoundingClientRect()
-      const x = (e.clientX - r.left) / r.width
-      const y = (e.clientY - r.top) / r.height
-      setPointer({
-        x: Math.min(1, Math.max(0, x)),
-        y: Math.min(1, Math.max(0, y)),
-      })
-    },
-    [],
-  )
-
-  const onDeckLeave = useCallback(() => {
-    setPointer({ x: 0.5, y: 0.5 })
-  }, [])
-
-  const deckStyle = {
-    '--px': pointer.x,
-    '--py': pointer.y,
-  } as CSSProperties
-
   return (
-    <div
-      ref={deckRef}
-      className="deck"
-      dir="rtl"
-      style={deckStyle}
-      onPointerMove={onDeckPointer}
-      onPointerLeave={onDeckLeave}
-    >
+    <div className="deck" dir="rtl">
       <StimulusBackdrop />
 
       <div className="deck__inner">
-        <header className="deck__top">
-          <span className="deck__brand">
-            <span className="deck__brand-icon" aria-hidden="true" />
-            {slides[0]?.title?.trim() ||
-              'إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه'}
-          </span>
-          <div className="deck__top-actions">
-            <a
-              className="deck__pdf"
-              href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
-              target="_blank"
-              rel="noopener noreferrer"
-              title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه — مرفق PDF مختصر"
+        <header className="deck__header">
+          <div className="deck__top">
+            <div className="deck__brand">
+              <span className="deck__brand-icon" aria-hidden="true" />
+              <div className="deck__brand-text">
+                <span className="deck__brand-line">{deckBrandPrimary}</span>
+                <span className="deck__brand-tag">عرض معرض</span>
+              </div>
+            </div>
+            <div className="deck__top-actions">
+              <a
+                className="deck__pdf"
+                href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنة — مرفق PDF مختصر"
+              >
+                فتح PDF
+              </a>
+            </div>
+          </div>
+          <div
+            className="deck__expo-rail"
+            aria-label={`تقدم العرض: الشريحة ${index + 1} من ${total}`}
+          >
+            {slide.section ? (
+              <span className="deck__expo-section">
+                {slideSectionLabel[slide.section]}
+              </span>
+            ) : (
+              <span className="deck__expo-section deck__expo-section--muted">
+                —
+              </span>
+            )}
+            <div
+              className="deck__expo-track"
+              role="progressbar"
+              aria-valuemin={1}
+              aria-valuemax={total}
+              aria-valuenow={index + 1}
+              aria-valuetext={`${index + 1} من ${total}`}
             >
-              فتح PDF
-            </a>
-            <span className="deck__progress" aria-live="polite">
-              الشريحة {index + 1} من {total}
+              <div
+                className="deck__expo-track-fill"
+                style={{ width: `${((index + 1) / total) * 100}%` }}
+              />
+            </div>
+            <span className="deck__expo-count" aria-live="polite">
+              {index + 1} / {total}
             </span>
           </div>
         </header>
