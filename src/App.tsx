@@ -63,6 +63,14 @@ function App() {
               <a
                 className="deck__pdf"
                 href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
+                download="ibraat-taard-neural.pdf"
+                title="تحميل ملف العرض (PDF)"
+              >
+                تحميل العرض
+              </a>
+              <a
+                className="deck__pdf"
+                href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
                 target="_blank"
                 rel="noopener noreferrer"
                 title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنة — مرفق PDF مختصر"
