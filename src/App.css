@@ -371,19 +371,19 @@
 }
 
 .deck__slide--hero .deck__title {
-  width: min(100%, 48rem);
+  width: min(100%, 52rem);
   margin-inline: auto;
   text-align: center;
-  font-size: clamp(1.65rem, 6.2vw, 3.15rem);
-  line-height: 1.28;
+  font-size: clamp(1.85rem, 7.2vw, 3.65rem);
+  line-height: 1.26;
   font-weight: 800;
 }
 
 .deck__slide--hero .deck__subtitle {
-  width: min(100%, 52rem);
+  width: min(100%, 56rem);
   margin-inline: auto;
-  font-size: clamp(1.02rem, 2.6vw, 1.45rem);
-  line-height: 1.45;
+  font-size: clamp(1.12rem, 3vw, 1.65rem);
+  line-height: 1.42;
 }
 
 .deck__slide--stats {
@@ -438,13 +438,13 @@
 
 /* الشريحة الثانية (مقدمة البحث): خط أوضح */
 .deck__slide--stats.deck__slide--intro-lg .deck__title {
-  font-size: clamp(1.28rem, 3.85vw, 1.95rem);
-  line-height: 1.32;
+  font-size: clamp(1.55rem, 4.65vw, 2.45rem);
+  line-height: 1.3;
 }
 
 .deck__slide--stats.deck__slide--intro-lg .deck__prose__p {
-  font-size: clamp(0.95rem, 2.15vw, 1.12rem);
-  line-height: 1.65;
+  font-size: clamp(1.08rem, 2.65vw, 1.32rem);
+  line-height: 1.68;
 }
 
 .deck__boxed-grid {
