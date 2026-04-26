@@ -108,7 +108,7 @@ function App() {
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}${heroCentered ? ' deck__slide--hero' : ''}${index === 1 ? ' deck__slide--intro-lg' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}${heroCentered ? ' deck__slide--hero' : ''}`}
           key={index}
         >
           {!slide.showSurveyCharts && slide.title?.trim() ? (
