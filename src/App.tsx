@@ -99,7 +99,7 @@ function App() {
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
           key={index}
         >
           {slide.title?.trim() ? (
@@ -125,7 +125,26 @@ function App() {
                 ))}
             </div>
           ) : null}
-          {!slide.showSurveyCharts && !slide.body?.trim() && slide.bullets?.length ? (
+          {!slide.showSurveyCharts &&
+          !slide.body?.trim() &&
+          slide.boxedSections?.length ? (
+            <div className="deck__boxed-grid">
+              {slide.boxedSections.map((box, j) => (
+                <article
+                  key={`${index}-box-${j}`}
+                  className="deck__box"
+                  style={{ animationDelay: `${0.05 + j * 0.08}s` }}
+                >
+                  <h2 className="deck__box-heading">{box.heading}</h2>
+                  <p className="deck__box-text">{box.text}</p>
+                </article>
+              ))}
+            </div>
+          ) : null}
+          {!slide.showSurveyCharts &&
+          !slide.body?.trim() &&
+          !slide.boxedSections?.length &&
+          slide.bullets?.length ? (
             <ul
               className={`deck__list${slide.inlineMarkers ? ' deck__list--pdf' : ''}`}
             >
