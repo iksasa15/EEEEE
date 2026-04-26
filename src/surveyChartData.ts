@@ -1,94 +1,108 @@
-/** بيانات الاستبانة (56 ردًا) — للرسوم في الشريحة */
+/** بيانات الاستبانة (56 ردًا) — ألوان متناسقة مع هوية العرض (أزرق / سماوي) */
+export const surveyPalette = {
+  ink: '#1a4a6e',
+  blue: '#2b6cb0',
+  bright: '#3182ce',
+  sky: '#38bdf8',
+  cyan: '#0ea5e9',
+  indigo: '#6366f1',
+} as const
+
 export type SurveySegment = {
   label: string
   pct: number
   color: string
 }
 
+export type SurveyChartKind = 'donut' | 'bar'
+
 export type SurveyBlock = {
   question: string
   segments: SurveySegment[]
+  /** افتراضي: دونات */
+  chart?: SurveyChartKind
 }
 
 export const surveyChartBlocks: SurveyBlock[] = [
   {
-    question: 'العمر',
+    question: 'الفئة العمرية',
     segments: [
-      { label: '18–20 سنة', pct: 46.4, color: '#ef4444' },
-      { label: '21–25', pct: 23.2, color: '#f97316' },
-      { label: '26–30', pct: 12.5, color: '#16a34a' },
-      { label: 'فئات أخرى', pct: 17.9, color: '#0ea5e9' },
+      { label: '18–20 سنة', pct: 46.4, color: surveyPalette.ink },
+      { label: '21–25', pct: 23.2, color: surveyPalette.bright },
+      { label: '26–30', pct: 12.5, color: surveyPalette.sky },
+      { label: 'فئات أخرى', pct: 17.9, color: surveyPalette.cyan },
     ],
   },
   {
     question: 'ساعات استخدام الجوال يوميًا',
+    chart: 'bar',
     segments: [
-      { label: 'أقل من 3 س', pct: 7.1, color: '#38bdf8' },
-      { label: '3–6 س', pct: 37.5, color: '#ef4444' },
-      { label: '6–9 س', pct: 26.8, color: '#f97316' },
-      { label: 'أكثر من 9 س', pct: 28.6, color: '#22c55e' },
+      { label: 'أقل من 3 س', pct: 7.1, color: surveyPalette.sky },
+      { label: '3–6 س', pct: 37.5, color: surveyPalette.blue },
+      { label: '6–9 س', pct: 26.8, color: surveyPalette.bright },
+      { label: 'أكثر من 9 س', pct: 28.6, color: surveyPalette.ink },
     ],
   },
   {
     question: 'التنقل بين التطبيقات خلال ساعة',
     segments: [
-      { label: 'نادرًا', pct: 5.3, color: '#3b82f6' },
-      { label: 'أحيانًا', pct: 21.4, color: '#ef4444' },
-      { label: 'كثيرًا', pct: 42.9, color: '#f97316' },
-      { label: 'دائمًا', pct: 30.4, color: '#22c55e' },
+      { label: 'نادرًا', pct: 5.3, color: surveyPalette.sky },
+      { label: 'أحيانًا', pct: 21.4, color: surveyPalette.cyan },
+      { label: 'كثيرًا', pct: 42.9, color: surveyPalette.blue },
+      { label: 'دائمًا', pct: 30.4, color: surveyPalette.indigo },
     ],
   },
   {
     question: 'التعرض لكمية كبيرة من المعلومات يوميًا',
     segments: [
-      { label: 'أبدًا', pct: 5, color: '#3b82f6' },
-      { label: 'قليلًا', pct: 19.6, color: '#ef4444' },
-      { label: 'متوسط', pct: 48.2, color: '#f97316' },
-      { label: 'كثيرًا', pct: 26.8, color: '#22c55e' },
+      { label: 'أبدًا', pct: 5, color: surveyPalette.sky },
+      { label: 'قليلًا', pct: 19.6, color: surveyPalette.cyan },
+      { label: 'متوسط', pct: 48.2, color: surveyPalette.blue },
+      { label: 'كثيرًا', pct: 26.8, color: surveyPalette.bright },
     ],
   },
   {
     question: 'استخدام أكثر من جهاز/تطبيق في الوقت نفسه',
     segments: [
-      { label: 'نادرًا', pct: 8.9, color: '#3b82f6' },
-      { label: 'لا', pct: 17.9, color: '#22c55e' },
-      { label: 'نعم دائمًا', pct: 25, color: '#6366f1' },
-      { label: 'أحيانًا', pct: 48.2, color: '#ef4444' },
+      { label: 'نادرًا', pct: 8.9, color: surveyPalette.sky },
+      { label: 'لا', pct: 17.9, color: surveyPalette.cyan },
+      { label: 'نعم دائمًا', pct: 25, color: surveyPalette.indigo },
+      { label: 'أحيانًا', pct: 48.2, color: surveyPalette.blue },
     ],
   },
   {
     question: 'صعوبة التركيز لفترة طويلة',
     segments: [
-      { label: 'دائمًا', pct: 14.3, color: '#22c55e' },
-      { label: 'كثيرًا', pct: 17.9, color: '#f97316' },
-      { label: 'أبدًا', pct: 23.2, color: '#3b82f6' },
-      { label: 'أحيانًا', pct: 44.6, color: '#ef4444' },
+      { label: 'دائمًا', pct: 14.3, color: surveyPalette.ink },
+      { label: 'كثيرًا', pct: 17.9, color: surveyPalette.bright },
+      { label: 'أبدًا', pct: 23.2, color: surveyPalette.sky },
+      { label: 'أحيانًا', pct: 44.6, color: surveyPalette.blue },
     ],
   },
   {
     question: 'صعوبة إكمال المهام للنهاية',
     segments: [
-      { label: 'دائمًا', pct: 10.7, color: '#22c55e' },
-      { label: 'كثيرًا', pct: 19.6, color: '#f97316' },
-      { label: 'أحيانًا', pct: 33.9, color: '#ef4444' },
-      { label: 'لا', pct: 35.7, color: '#3b82f6' },
+      { label: 'دائمًا', pct: 10.7, color: surveyPalette.ink },
+      { label: 'كثيرًا', pct: 19.6, color: surveyPalette.bright },
+      { label: 'أحيانًا', pct: 33.9, color: surveyPalette.cyan },
+      { label: 'لا', pct: 35.7, color: surveyPalette.sky },
     ],
   },
   {
     question: 'توتر أو ضغط بسبب كثرة المحتوى',
     segments: [
-      { label: 'أبدًا', pct: 33.9, color: '#3b82f6' },
-      { label: 'قليلًا', pct: 35.7, color: '#ef4444' },
-      { label: 'متوسط', pct: 17.9, color: '#f97316' },
-      { label: 'شديد', pct: 12.5, color: '#22c55e' },
+      { label: 'أبدًا', pct: 33.9, color: surveyPalette.sky },
+      { label: 'قليلًا', pct: 35.7, color: surveyPalette.cyan },
+      { label: 'متوسط', pct: 17.9, color: surveyPalette.blue },
+      { label: 'شديد', pct: 12.5, color: surveyPalette.ink },
     ],
   },
   {
     question: 'تأثر المزاج بعد السوشيال ميديا لفترة طويلة',
     segments: [
-      { label: 'لا', pct: 30.4, color: '#3b82f6' },
-      { label: 'نعم بشكل واضح', pct: 32.1, color: '#f97316' },
-      { label: 'قليلًا', pct: 37.5, color: '#ef4444' },
+      { label: 'لا', pct: 30.4, color: surveyPalette.sky },
+      { label: 'نعم بشكل واضح', pct: 32.1, color: surveyPalette.blue },
+      { label: 'قليلًا', pct: 37.5, color: surveyPalette.bright },
     ],
   },
 ]

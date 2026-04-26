@@ -102,13 +102,18 @@ function App() {
           className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
           key={index}
         >
-          {slide.title?.trim() ? (
+          {!slide.showSurveyCharts && slide.title?.trim() ? (
             <h1 className="deck__title">{slide.title}</h1>
           ) : null}
-          {slide.subtitle ? (
+          {!slide.showSurveyCharts && slide.subtitle ? (
             <p className="deck__subtitle">{slide.subtitle}</p>
           ) : null}
-          {slide.showSurveyCharts ? <SurveyChartBlocks /> : null}
+          {slide.showSurveyCharts ? (
+            <SurveyChartBlocks
+              heading={slide.title?.trim() || 'عرض النتائج (بياني)'}
+              subheading={slide.subtitle}
+            />
+          ) : null}
           {!slide.showSurveyCharts && slide.body?.trim() ? (
             <div className="deck__prose">
               {slide.body
