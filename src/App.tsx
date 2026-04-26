@@ -81,13 +81,24 @@ function App() {
             <span className="deck__brand-icon" aria-hidden="true" />
             إفراط التعرض · آليات عصبية
           </span>
-          <span className="deck__progress" aria-live="polite">
-            الشريحة {index + 1} من {total}
-          </span>
+          <div className="deck__top-actions">
+            <a
+              className="deck__pdf"
+              href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه — نصوص العرض (PDF)"
+            >
+              فتح PDF (نصوص العرض)
+            </a>
+            <span className="deck__progress" aria-live="polite">
+              الشريحة {index + 1} من {total}
+            </span>
+          </div>
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.note ? ' deck__slide--empty' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.note ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}`}
           key={index}
         >
           {slide.title?.trim() ? (
