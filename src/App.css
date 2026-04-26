@@ -1,0 +1,190 @@
+/* ثيم بيبي بلو */
+.deck {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1rem, 4vw, 2.5rem);
+  box-sizing: border-box;
+  background:
+    radial-gradient(1000px 520px at 0% 0%, #b8e8fc99, transparent 55%),
+    radial-gradient(900px 480px at 100% 10%, #a8e0f899, transparent 50%),
+    radial-gradient(800px 600px at 50% 100%, #89cff055, transparent 45%),
+    linear-gradient(165deg, #f0fbff 0%, #dff6ff 38%, #c9ecfc 72%, #b8e5fa 100%);
+  color: #2c5282;
+}
+
+.deck__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  font-size: 0.9rem;
+  color: #4a7aa5;
+}
+
+.deck__brand {
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #2b6cb0;
+}
+
+.deck__progress {
+  font-variant-numeric: tabular-nums;
+}
+
+.deck__slide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  max-width: 52rem;
+  margin-inline: auto;
+  width: 100%;
+  text-align: right;
+  animation: deckIn 0.35s ease-out;
+}
+
+@keyframes deckIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.deck__title {
+  margin: 0;
+  font-size: clamp(1.35rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.35;
+  color: #1a4a6e;
+  letter-spacing: -0.02em;
+}
+
+.deck__subtitle {
+  margin: 0;
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+  color: #3182ce;
+  font-style: italic;
+  direction: ltr;
+  text-align: center;
+}
+
+.deck__list {
+  margin: 0;
+  padding: 0 1.1rem 0 0;
+  list-style: disc;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
+  line-height: 1.75;
+  color: #2c5282;
+}
+
+.deck__list li {
+  margin-bottom: 0.65rem;
+}
+
+.deck__list li::marker {
+  color: #63b3ed;
+}
+
+.deck__note {
+  margin: 0.5rem 0 0;
+  font-size: 0.95rem;
+  color: #4a7aa5;
+  border-top: 1px solid #a8d8f0;
+  padding-top: 1rem;
+}
+
+.deck__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #9fd4f0;
+}
+
+.deck__dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  justify-content: center;
+  max-width: min(100%, 20rem);
+}
+
+.deck__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  border: none;
+  background: #b8e0f4;
+  cursor: pointer;
+  padding: 0;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.deck__dot:hover {
+  background: #7ec8e8;
+}
+
+.deck__dot--on {
+  background: #2b6cb0;
+  transform: scale(1.25);
+}
+
+.deck__btn {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 0.65rem 1.15rem;
+  border: 1px solid transparent;
+  transition: background 0.2s, border-color 0.2s, opacity 0.2s, box-shadow 0.2s;
+}
+
+.deck__btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.deck__btn--ghost {
+  background: #f0fbff;
+  color: #2b6cb0;
+  border-color: #89cff0;
+}
+
+.deck__btn--ghost:hover:not(:disabled) {
+  background: #e0f4ff;
+  border-color: #5dade2;
+  box-shadow: 0 4px 14px #4299e122;
+}
+
+.deck__btn--primary {
+  background: linear-gradient(135deg, #89cff0 0%, #5dade2 45%, #4299e1 100%);
+  color: #fff;
+  font-weight: 600;
+  border-color: #3182ce;
+  box-shadow: 0 8px 24px #4299e144;
+  text-shadow: 0 1px 0 #2b6cb033;
+}
+
+.deck__btn--primary:hover:not(:disabled) {
+  filter: brightness(1.04);
+  box-shadow: 0 10px 28px #3182ce55;
+}
+
+@media (max-width: 640px) {
+  .deck__bar {
+    flex-direction: column;
+  }
+
+  .deck__btn {
+    width: 100%;
+    max-width: 22rem;
+  }
+}
