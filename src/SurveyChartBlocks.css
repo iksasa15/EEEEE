@@ -1,0 +1,72 @@
+.survey-charts {
+  width: 100%;
+  text-align: right;
+  margin-top: 0.25rem;
+}
+
+.survey-chart-block {
+  margin-bottom: 0.85rem;
+}
+
+.survey-chart-block:last-child {
+  margin-bottom: 0;
+}
+
+.survey-chart-block__title {
+  margin: 0 0 0.3rem;
+  font-size: clamp(0.78rem, 1.7vw, 0.88rem);
+  font-weight: 700;
+  color: #1a4a6e;
+  line-height: 1.35;
+}
+
+.survey-chart-bar {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: inset 0 0 0 1px rgba(43, 108, 176, 0.15);
+  background: #e2e8f0;
+}
+
+.survey-chart-seg {
+  flex-shrink: 0;
+  min-width: 2px;
+  transition: opacity 0.2s ease;
+}
+
+.survey-chart-seg:hover {
+  opacity: 0.88;
+}
+
+.survey-chart-legend {
+  list-style: none;
+  margin: 0.35rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 0.75rem;
+  font-size: clamp(0.68rem, 1.45vw, 0.78rem);
+  color: #334155;
+  line-height: 1.35;
+}
+
+.survey-chart-legend li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.survey-chart-legend__swatch {
+  width: 8px;
+  height: 8px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.survey-chart-legend__text strong {
+  font-weight: 700;
+  color: #0f172a;
+}

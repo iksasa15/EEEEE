@@ -7,6 +7,7 @@ import {
   type PointerEvent as DeckPointerEvent,
 } from 'react'
 import { slides } from './slidesContent'
+import { SurveyChartBlocks } from './SurveyChartBlocks'
 import { StimulusBackdrop } from './StimulusBackdrop'
 import './App.css'
 
@@ -98,7 +99,7 @@ function App() {
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.note ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
           key={index}
         >
           {slide.title?.trim() ? (
@@ -107,19 +108,23 @@ function App() {
           {slide.subtitle ? (
             <p className="deck__subtitle">{slide.subtitle}</p>
           ) : null}
-          {slide.bullets?.length ? (
+          {slide.showSurveyCharts ? <SurveyChartBlocks /> : null}
+          {!slide.showSurveyCharts && slide.bullets?.length ? (
             <ul
               className={`deck__list${slide.inlineMarkers ? ' deck__list--pdf' : ''}`}
             >
-              {slide.bullets.map((item, j) => (
-                <li
-                  key={`${index}-${j}`}
-                  className="deck__list-item"
-                  style={{ animationDelay: `${0.05 + j * 0.07}s` }}
-                >
-                  {item}
-                </li>
-              ))}
+              {slide.bullets.map((item, j) => {
+                const tone = slide.bulletVariants?.[j]
+                return (
+                  <li
+                    key={`${index}-${j}`}
+                    className={`deck__list-item${tone ? ` deck__list-item--${tone}` : ''}`}
+                    style={{ animationDelay: `${0.05 + j * 0.07}s` }}
+                  >
+                    {item}
+                  </li>
+                )
+              })}
             </ul>
           ) : null}
           {slide.note ? <p className="deck__note">{slide.note}</p> : null}
