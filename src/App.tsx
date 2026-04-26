@@ -17,6 +17,14 @@ function App() {
   const [pointer, setPointer] = useState({ x: 0.5, y: 0.5 })
   const total = slides.length
   const slide = slides[index]
+  /** شريحة عنوان فقط (بدون قوائم/نص طويل) — توسيط عمودي وأفقي */
+  const heroCentered =
+    !slide.showSurveyCharts &&
+    Boolean(slide.title?.trim()) &&
+    !slide.body?.trim() &&
+    !slide.boxedSections?.length &&
+    !slide.bullets?.length &&
+    !slide.note?.trim()
 
   const goNext = useCallback(() => {
     setIndex((i) => Math.min(i + 1, total - 1))
@@ -80,7 +88,8 @@ function App() {
         <header className="deck__top">
           <span className="deck__brand">
             <span className="deck__brand-icon" aria-hidden="true" />
-            إفراط التعرض · آليات عصبية
+            {slides[0]?.title?.trim() ||
+              'إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه'}
           </span>
           <div className="deck__top-actions">
             <a
@@ -99,7 +108,7 @@ function App() {
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.boxedSections?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}${heroCentered ? ' deck__slide--hero' : ''}`}
           key={index}
         >
           {!slide.showSurveyCharts && slide.title?.trim() ? (

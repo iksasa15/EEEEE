@@ -24,10 +24,9 @@ export type Slide = {
 
 export const slides: Slide[] = [
   {
-    title:
-      'إفراط التعرض للمؤثرات وآثره على\nالآليات العصبية الكامنه',
+    title: 'إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه',
     subtitle:
-      'E f f e c t s  o f  E x c e s s i v e  D i g i t a l  E x p o s u r e\n\u201d o n  t h e  B r a i n',
+      'E f f e c t s o f E x c e s s i v e D i g i t a l E x p o s u r e \u201d o n t h e B r a i n',
   },
   {
     title: 'مقدمه البحث',

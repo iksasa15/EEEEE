@@ -243,14 +243,22 @@
 
 .deck__brand {
   display: inline-flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.5rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: min(100%, 48rem);
+  font-size: clamp(0.72rem, 2.1vw, 0.92rem);
   font-weight: 600;
   letter-spacing: 0.02em;
+  line-height: 1.38;
   color: #2b6cb0;
+  text-align: right;
 }
 
 .deck__brand-icon {
+  flex-shrink: 0;
+  margin-top: 0.32em;
   width: 10px;
   height: 10px;
   border-radius: 50%;
@@ -353,6 +361,24 @@
 
 .deck__slide--empty {
   min-height: 12rem;
+}
+
+/* عنوان + ترجمة فقط: توسيط الكتلة في الشريحة */
+.deck__slide--hero {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.deck__slide--hero .deck__title {
+  width: min(100%, 42rem);
+  margin-inline: auto;
+  text-align: center;
+}
+
+.deck__slide--hero .deck__subtitle {
+  width: min(100%, 46rem);
+  margin-inline: auto;
 }
 
 .deck__slide--stats {
