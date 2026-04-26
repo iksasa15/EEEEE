@@ -88,9 +88,9 @@ function App() {
               href={`${import.meta.env.BASE_URL}ibraat-taard-neural.pdf`}
               target="_blank"
               rel="noopener noreferrer"
-              title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه — نصوص العرض (PDF)"
+              title="إفراط التعرض للمؤثرات وآثره على الآليات العصبية الكامنه — مرفق PDF مختصر"
             >
-              فتح PDF (نصوص العرض)
+              فتح PDF
             </a>
             <span className="deck__progress" aria-live="polite">
               الشريحة {index + 1} من {total}
@@ -99,7 +99,7 @@ function App() {
         </header>
 
         <main
-          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
+          className={`deck__slide${!slide.title?.trim() && !slide.subtitle && !slide.bullets?.length && !slide.body?.trim() && !slide.note && !slide.showSurveyCharts ? ' deck__slide--empty' : ''}${slide.layout === 'stats' ? ' deck__slide--stats' : ''}${slide.showSurveyCharts ? ' deck__slide--survey-charts' : ''}`}
           key={index}
         >
           {slide.title?.trim() ? (
@@ -109,7 +109,23 @@ function App() {
             <p className="deck__subtitle">{slide.subtitle}</p>
           ) : null}
           {slide.showSurveyCharts ? <SurveyChartBlocks /> : null}
-          {!slide.showSurveyCharts && slide.bullets?.length ? (
+          {!slide.showSurveyCharts && slide.body?.trim() ? (
+            <div className="deck__prose">
+              {slide.body
+                .trim()
+                .split(/\n\n+/)
+                .map((para, j) => (
+                  <p
+                    key={`${index}-prose-${j}`}
+                    className="deck__prose__p"
+                    style={{ animationDelay: `${0.05 + j * 0.07}s` }}
+                  >
+                    {para.trim()}
+                  </p>
+                ))}
+            </div>
+          ) : null}
+          {!slide.showSurveyCharts && !slide.body?.trim() && slide.bullets?.length ? (
             <ul
               className={`deck__list${slide.inlineMarkers ? ' deck__list--pdf' : ''}`}
             >
